@@ -68,6 +68,34 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXTunnelTCP" {
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
 }
 
+resource "azurerm_network_security_rule" "AzureSecurityRuleTCXProxy" {
+  name                        = "TCXProxy"
+  priority                    = 341
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "8080"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+}
+
+resource "azurerm_network_security_rule" "AzureSecurityRulePortainer" {
+  name                        = "Portainer"
+  priority                    = 342
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "9000"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+}
+
 resource "azurerm_network_security_rule" "AzureSecurityRule3CXSIPUDP" {
   name                        = "3CXSIPUDP"
   priority                    = 350
