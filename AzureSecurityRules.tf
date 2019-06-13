@@ -130,7 +130,7 @@ resource "azurerm_network_security_rule" "AzureSecurityRulePortainer" {
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
-  depends_on                  = "Allow Access to Portainer Dashboard"
+  description                 = "Allow Access to Portainer Dashboard"
 }
 
 resource "azurerm_network_security_rule" "AzureSecurityRuleIKE" {
