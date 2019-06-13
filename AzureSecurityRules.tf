@@ -10,24 +10,26 @@ resource "azurerm_network_security_rule" "AzureSecurityRuleSSH" {
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow SSH"
 }
 
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXSetupPort" {
-  name                        = "3CXSetupPort"
+resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardHTTPPort" {
+  name                        = "3CXDashboardPortHTTP"
   priority                    = 310
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_range      = "5015"
+  destination_port_range      = "5000"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow 3CX Management Port"
 }
 
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardPort" {
-  name                        = "3CXDashboardPort"
+resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardHTTPSPort" {
+  name                        = "3CXDashboardPortHTTPS"
   priority                    = 320
   direction                   = "Inbound"
   access                      = "Allow"
@@ -38,95 +40,57 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardPort" {
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow 3CX Management Port"
 }
 
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXSIPTCP" {
-  name                        = "3CXSIPTCP"
+resource "azurerm_network_security_rule" "AzureSecurityRule3CXSetupPort" {
+  name                        = "3CXSetupPort"
   priority                    = 330
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
   source_port_range           = "*"
-  destination_port_range      = "5060"
+  destination_port_range      = "5015"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow 3CX Setup port (HTTP)"
 }
 
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXTunnelTCP" {
-  name                        = "3CXTunnelTCP"
+resource "azurerm_network_security_rule" "AzureSecurityRule3CXSIP" {
+  name                        = "3CXSIP"
   priority                    = 340
   direction                   = "Inbound"
   access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = "*"
-  destination_port_range      = "5090"
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
-}
-
-resource "azurerm_network_security_rule" "AzureSecurityRuleTCXProxy" {
-  name                        = "TCXProxy"
-  priority                    = 341
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = "*"
-  destination_port_range      = "8080"
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
-}
-
-resource "azurerm_network_security_rule" "AzureSecurityRulePortainer" {
-  name                        = "Portainer"
-  priority                    = 342
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Tcp"
-  source_port_range           = "*"
-  destination_port_range      = "9000"
-  source_address_prefix       = "*"
-  destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
-}
-
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXSIPUDP" {
-  name                        = "3CXSIPUDP"
-  priority                    = 350
-  direction                   = "Inbound"
-  access                      = "Allow"
-  protocol                    = "Udp"
+  protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "5060"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow SIP protocol on TCP & UDP"
 }
 
-resource "azurerm_network_security_rule" "AzureSecurityRule3CXTunnelUDP" {
-  name                        = "3CXTunnelUDP"
-  priority                    = 360
+resource "azurerm_network_security_rule" "AzureSecurityRule3CXTunnel" {
+  name                        = "3CXTunnel"
+  priority                    = 350
   direction                   = "Inbound"
   access                      = "Allow"
-  protocol                    = "Udp"
+  protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "5090"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow 3CX Tunnel on TCP & UDP"
 }
 
 resource "azurerm_network_security_rule" "AzureSecurityRule3CXRTP" {
   name                        = "3CXRTP"
-  priority                    = 370
+  priority                    = 360
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Udp"
@@ -136,4 +100,65 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXRTP" {
   destination_address_prefix  = "*"
   resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
   network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow 3CX Media Server (RTP)"
+}
+
+resource "azurerm_network_security_rule" "AzureSecurityRuleTCXProxy" {
+  name                        = "TCXProxy"
+  priority                    = 370
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "8080"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  depends_on                  = "Allow Access to TCXProxy"
+}
+
+resource "azurerm_network_security_rule" "AzureSecurityRulePortainer" {
+  name                        = "Portainer"
+  priority                    = 380
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "9000"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  depends_on                  = "Allow Access to Portainer Dashboard"
+}
+
+resource "azurerm_network_security_rule" "AzureSecurityRuleIKE" {
+  name                        = "IKE"
+  priority                    = 390
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "500"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow IPSec Port for strongSwan (IKE)"
+}
+
+resource "azurerm_network_security_rule" "AzureSecurityRuleIPSec" {
+  name                        = "IPSec"
+  priority                    = 400
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Udp"
+  source_port_range           = "*"
+  destination_port_range      = "4500"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
+  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  description                 = "Allow IPSec Port for strongSwan (IPSEC NAT-Traversal mode)"
 }
