@@ -6,6 +6,6 @@ variable "CustomerSubdomain" {}
 variable "VendorDomainName" {}
 
 variable "ResourceGroupLocation" {
-  default     = "West India"
+  default     = "UAE North"
   description = "The location where the resource group will be created."
 }
