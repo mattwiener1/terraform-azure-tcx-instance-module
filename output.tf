@@ -1,3 +1,3 @@
 output "SSHCommand" {
-  value = "ssh ${var.AdminUsername}@${aws_route53_record.AWSDNSRecord.name} -p ${var.AdminPassword}"
+  value = "ssh ${var.AdminUsername}@${cloudflare_record.CFDNSRecord.hostname} -p ${var.AdminPassword}"
 }
