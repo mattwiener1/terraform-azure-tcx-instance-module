@@ -3,6 +3,6 @@ resource "cloudflare_record" "CFDNSRecord" {
   name     = "${lower(var.CustomerSubdomain)}"
   value    = "${azurerm_public_ip.AzurePublicIP.ip_address}"
   type     = "A"
-  ttl      = 3600
+  ttl      = 300
   priority = 0
 }
