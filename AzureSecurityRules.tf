@@ -8,8 +8,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRuleSSH" {
   destination_port_range      = "22"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow SSH"
 }
 
@@ -23,8 +23,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardHTTPPort"
   destination_port_range      = "5000"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow 3CX Management Port"
 }
 
@@ -38,8 +38,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXDashboardHTTPSPort
   destination_port_range      = "5001"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow 3CX Management Port"
 }
 
@@ -53,8 +53,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXSetupPort" {
   destination_port_range      = "5015"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow 3CX Setup port (HTTP)"
 }
 
@@ -68,8 +68,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXSIP" {
   destination_port_range      = "5060"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow SIP protocol on TCP & UDP"
 }
 
@@ -83,8 +83,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXTunnel" {
   destination_port_range      = "5090"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow 3CX Tunnel on TCP & UDP"
 }
 
@@ -98,8 +98,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRule3CXRTP" {
   destination_port_range      = "9000-10999"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow 3CX Media Server (RTP)"
 }
 
@@ -113,8 +113,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRuleTCXProxy" {
   destination_port_range      = "8080"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow Access to TCXProxy"
 }
 
@@ -128,8 +128,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRulePortainer" {
   destination_port_range      = "9000"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow Access to Portainer Dashboard"
 }
 
@@ -143,8 +143,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRuleIKE" {
   destination_port_range      = "500"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow IPSec Port for strongSwan (IKE)"
 }
 
@@ -158,7 +158,8 @@ resource "azurerm_network_security_rule" "AzureSecurityRuleIPSec" {
   destination_port_range      = "4500"
   source_address_prefix       = "*"
   destination_address_prefix  = "*"
-  resource_group_name         = "${azurerm_resource_group.AzureResourceGroup.name}"
-  network_security_group_name = "${azurerm_network_security_group.AzureSecurityGroup.name}"
+  resource_group_name         = azurerm_resource_group.AzureResourceGroup.name
+  network_security_group_name = azurerm_network_security_group.AzureSecurityGroup.name
   description                 = "Allow IPSec Port for strongSwan (IPSEC NAT-Traversal mode)"
 }
+
