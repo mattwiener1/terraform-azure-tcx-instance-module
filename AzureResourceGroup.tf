@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "AzureResourceGroup" {
-  name     = "CompanyToneCustomers-${var.CustomerName}"
+  name     = "${var.CustomerName}"
   location = var.ResourceGroupLocation
 }
 
